@@ -1,7 +1,9 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:itiprojectthree/core/helpers/app_color.dart';
 import 'package:itiprojectthree/core/models/product_model.dart';
+import 'package:itiprojectthree/core/screens/carts.dart';
 import 'package:itiprojectthree/core/widgets/button.dart';
 import 'package:itiprojectthree/core/widgets/title_app_bar.dart';
 
@@ -37,13 +39,20 @@ class ItemDatil extends StatelessWidget {
             padding: EdgeInsets.only(left: 24),
             child: Row(
               children: [
-                Icon(Icons.star , color: Colors.amber,),
+                Icon(Icons.star, color: Colors.amber),
                 Padding(padding: EdgeInsets.only(left: 10)),
-                Text("${modelCategoryProduct.rating}" , style: TextStyle(fontSize: 15 , fontWeight: FontWeight.w600 , color: AppColor.color1a1),)
+                Text(
+                  "${modelCategoryProduct.rating}",
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: AppColor.color1a1,
+                  ),
+                ),
               ],
             ),
           ),
-          SizedBox(height: 8,),
+          SizedBox(height: 8),
           Container(
             padding: EdgeInsets.only(left: 24, bottom: 20),
             child: Text(
@@ -92,7 +101,20 @@ class ItemDatil extends StatelessWidget {
                       backgroundColor: AppColor.color9c9,
                       padding: EdgeInsets.only(top: 15, bottom: 15),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      AnimatedSnackBar.material(
+                        'This a snackbar with info type',
+                        type: AnimatedSnackBarType.success,
+                        duration: const Duration(seconds: 1),
+                        mobilePositionSettings: const MobilePositionSettings(
+                          topOnAppearance: 100,
+                        ),
+                        mobileSnackBarPosition: MobileSnackBarPosition.top,
+                        desktopSnackBarPosition:
+                            DesktopSnackBarPosition.bottomLeft,
+                      ).show(context);
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Carts()));
+                    },
                     child: Text(
                       "Add to chars",
                       style: TextStyle(

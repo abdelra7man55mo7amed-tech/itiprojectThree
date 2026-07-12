@@ -2,6 +2,7 @@ import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itiprojectthree/core/screens/Home.dart';
+import 'package:itiprojectthree/core/screens/home_naigator.dart';
 import 'package:itiprojectthree/core/widgets/app_form_fild.dart';
 import 'package:itiprojectthree/core/widgets/button.dart';
 import 'package:itiprojectthree/core/widgets/login_or_sign.dart';
@@ -46,7 +47,7 @@ class LogIn extends StatelessWidget {
                 mobileSnackBarPosition: MobileSnackBarPosition.top,
                 desktopSnackBarPosition: DesktopSnackBarPosition.bottomLeft,
               ).show(context);
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomeNaigator()));
             }
           },
           builder: (context, state) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itiprojectthree/core/screens/home_naigator.dart';
+import 'package:itiprojectthree/core/screens/log_in.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeNaigator(),
+      home: LogIn(),
     );
   }
 }

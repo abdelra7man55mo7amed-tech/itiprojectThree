@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itiprojectthree/core/helpers/app_color.dart';
+import 'package:itiprojectthree/core/screens/item_datil.dart';
 import 'package:itiprojectthree/core/widgets/categorie_item.dart';
 import 'package:itiprojectthree/core/widgets/product_item.dart';
 import 'package:itiprojectthree/core/widgets/title_page.dart';
@@ -119,10 +120,15 @@ class _Home extends State<Home> {
                                       ),
                                   itemCount: state.products.length,
                                   itemBuilder: (context, index) {
-                                    return ProductItem(
-                                      img: state.products[index].thumbnail,
-                                      tite: state.products[index].title,
-                                      price: "${state.products[index].price}",
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ItemDatil(modelCategoryProduct: state.products[index])));
+                                      },
+                                      child: ProductItem(
+                                        img: state.products[index].thumbnail,
+                                        tite: state.products[index].title,
+                                        price: "${state.products[index].price}",
+                                      ),
                                     );
                                   },
                                 );
@@ -137,10 +143,9 @@ class _Home extends State<Home> {
                                   child: CircularProgressIndicator(),
                                 );
                               }
-          
+        
                               if (state is SearchSuccess) {
                                 List products = state.data["products"];
-          
                                 return GridView.builder(
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
