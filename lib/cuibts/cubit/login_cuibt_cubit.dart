@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:itiprojectthree/core/helpers/cachHelper.dart';
 import 'package:itiprojectthree/core/models/user_model.dart';
 import 'package:meta/meta.dart';
 
@@ -20,6 +21,7 @@ class LoginCuibtCubit extends Cubit<LoginCuibtState> {
       );
       if (response.statusCode == 201 || response.statusCode == 200) {
         UserModel userModel = UserModel.fromJson(response.data);
+        await CacheHelper.saveToken(userModel.accessToken!);
         emit(LogInSuccess());
       } else {
         emit(LogInfailue('no token'));

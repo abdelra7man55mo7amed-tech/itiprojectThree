@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itiprojectthree/core/helpers/app_color.dart';
@@ -5,6 +6,7 @@ import 'package:itiprojectthree/core/widgets/button.dart';
 import 'package:itiprojectthree/core/widgets/cart_details.dart';
 import 'package:itiprojectthree/core/widgets/title_app_bar.dart';
 import 'package:itiprojectthree/cuibts/cubit/get_cart_cubit.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Carts extends StatelessWidget {
   const Carts({super.key});
@@ -15,7 +17,7 @@ class Carts extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: TitleAppBar(title: "Carts"),
+          title: TitleAppBar(title: "Carts".tr()),
           centerTitle: true,
           backgroundColor: Colors.white,
         ),
@@ -27,7 +29,13 @@ class Carts extends StatelessWidget {
                 BlocBuilder<GetCartCubit, GetCartState>(
                   builder: (context, state) {
                     if (state is CartLoading) {
-                      return Center(child: CircularProgressIndicator());
+                      return Shimmer.fromColors(
+                        baseColor: Colors.red,
+                        highlightColor: Colors.yellow,
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      );
                     }
                     if (state is CartFailure) {
                       return Center(child: Text(state.message));
@@ -50,15 +58,22 @@ class Carts extends StatelessWidget {
                               );
                             },
                           ),
-                          SizedBox(height: 30,),
+                          SizedBox(height: 30),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("Sub-total" , style: TextStyle(fontWeight: FontWeight.w400 , fontSize: 16 , color: AppColor.color808),),
-                              Text("${state.cart.total}")
+                              Text(
+                                "Total".tr(),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16,
+                                  color: AppColor.color808,
+                                ),
+                              ),
+                              Text("${state.cart.total}"),
                             ],
                           ),
-                          Button(onPressed: (){}, title: "Go to check out")
+                          Button(onPressed: () {}, title: "Check".tr()),
                         ],
                       );
                     }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itiprojectthree/core/helpers/app_color.dart';
@@ -34,7 +35,7 @@ class _Home extends State<Home> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TitlePage(title: "Discover"),
+                  TitlePage(title: "Discover".tr()),
                   const SizedBox(height: 16),
                   TextField(
                     controller: controller,
@@ -48,7 +49,7 @@ class _Home extends State<Home> {
                     },
                     decoration: InputDecoration(
                       suffixIcon: Icon(Icons.search, color: AppColor.colorb3b),
-                      hintText: "Search for clothes...",
+                      hintText: "Search".tr(),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(width: 2, color: AppColor.colore6e),
                         borderRadius: BorderRadius.circular(10),

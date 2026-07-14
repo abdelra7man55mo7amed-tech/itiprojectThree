@@ -1,4 +1,5 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itiprojectthree/core/screens/Home.dart';
@@ -61,13 +62,13 @@ class LogIn extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SizedBox(height: 59),
-                  TitlePage(title: "Login to your account"),
-                  SubtitlePage(title: "It’s great to see you again."),
+                  TitlePage(title: "login".tr()),
+                  SubtitlePage(title: "login_welcome".tr()),
                   SizedBox(height: 24),
-                  TitleAppFom(title: "User email"),
+                  TitleAppFom(title: "email_title".tr()),
                   SizedBox(height: 4),
                   AppFormFild(
-                    title: "Enter your email address",
+                    title: "email_hint".tr(),
                     textEditingController: cuibt.email,
                     validator: (value) {},
                     iconButton: IconButton(
@@ -76,19 +77,19 @@ class LogIn extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-                  TitleAppFom(title: "User Password"),
+                  TitleAppFom(title: "pass_title".tr()),
                   SizedBox(height: 4),
                   PasswordAppFormFiled(
                     textEditingController: cuibt.password,
-                    title: "Enter your password",
+                    title: "pass_hint".tr(),
                     validator: (value) {},
                   ),
                   SizedBox(height: 55),
                   Button(onPressed: (){
                     context.read<LoginCuibtCubit>().login();
-                  }, title: "Sign in"),
+                  }, title: "sign".tr()),
                   SizedBox(height: 300),
-                  LoginOrSign(title: "Don’t have an account", subtitle: "join")
+                  LoginOrSign(title: "have_account".tr(), subtitle: "join".tr())
                 ],
               ),
             );

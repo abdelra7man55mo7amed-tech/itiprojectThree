@@ -1,7 +1,14 @@
 class UserModel {
-  String? token;
-  UserModel({required this.token});
+  String? accessToken;
+  String? refreshToken;
+
+  UserModel({
+    this.accessToken,
+    this.refreshToken,
+  });
+
   UserModel.fromJson(Map<String, dynamic> json) {
-    token = json['token'];
+    accessToken = json['access_token'];
+    refreshToken = json['refresh_token'];
   }
 }
